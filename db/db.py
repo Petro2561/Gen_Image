@@ -1,7 +1,7 @@
 from sqlalchemy import func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, registry
 from datetime import datetime, timezone
-from typing import Annotated, TypeAlias, Self, Optional
+from typing import Annotated, TypeAlias, Optional
 from sqlalchemy import BigInteger, DateTime, Integer, func
 from aiogram.enums import ChatType
 from aiogram.types import Chat, User
@@ -45,7 +45,7 @@ class DBUser(Base, TimestampMixin):
     is_admin: Mapped[bool] = mapped_column(default=False)
 
     @classmethod
-    def from_aiogram(cls, user: User) -> Self:
+    def from_aiogram(cls, user: User):
         return cls(
             user_id=user.id,
             username=user.username,
