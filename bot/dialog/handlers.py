@@ -111,7 +111,7 @@ async def handle_final(callback: CallbackQuery, button: Button, dialog_manager: 
         final_prompt = settings.MAN_PROMPT + prompt
     else:
         final_prompt = settings.LADY_PROMPT + prompt
-    await callback.message.answer(f"Промпт для нейросети: {final_prompt} (Для тестового режима)")
+    # await callback.message.answer(f"Промпт для нейросети: {final_prompt} (Для тестового режима)")
     image = await generate_image(prompt=final_prompt)
     image.seek(0)
     final_image = await add_logo_to_image(image)
