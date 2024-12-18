@@ -18,7 +18,7 @@ from bot.states import MainSG
 start_dialog = Dialog(
     Window(
         Const(settings.SUBSCRIBE_TEMPLATE),
-        Next(text=Const("Уже готово"), on_click=handlers.check_subscribe),
+        Button(text=Const("Уже готово"), id="check", on_click=handlers.check_subscribe),
         Url(text=Const("Иду подписываться"), url=Const('https://t.me/vk_dating')),
         state=MainSG.subscribe
     ),
@@ -30,6 +30,16 @@ start_dialog = Dialog(
         ),
         Back(Const("Назад")),
         state=MainSG.choose_gender
+    ),
+    Window(
+        Const(settings.AGE_TEMPLATE),
+        Column(
+            Next(Const("Молодой"), id="young", on_click=handlers.handle_choose_age),
+            Next(Const("Взрослый"), id="adult", on_click=handlers.handle_choose_age),
+            Next(Const("Пожилой"), id="aged", on_click=handlers.handle_choose_age),
+        ),
+        Back(Const("Назад")),
+        state=MainSG.choose_age
     ),
     Window(
         Const(settings.BODY_TYPE_TEMPLATE),

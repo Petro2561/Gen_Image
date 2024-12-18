@@ -8,6 +8,8 @@ SUBSCRIBE_TEMPLATE = """Начнём? Да, идеальные мэтчи у н�
 
 MATCH_PREFERENCES_TEMPLATE = """Отлично! Теперь закройте глаза и представьте своего идеального мэтча. Кто перед вами?"""
 
+AGE_TEMPLATE = """Выберите возраст: """
+
 BODY_TYPE_TEMPLATE = """Вкусы у всех разные! Какое телосложение предпочитаете?"""
 
 HAIR_TYPE_TEMPLATE = """Прическа играет важную роль в образе. Выбирайте на свой вкус:"""
@@ -35,6 +37,9 @@ CHARACTER_MAPPING = {
     "lady": "lady",
     "slim": "thin and neat",
     "plump": "plump and fat",
+    "young": "young",
+    "adult": "adult",
+    "aged": "aged",
     "sporty": "sporty and muscled, bonny",
     "short_hair": "short hair",
     "long_hair": "long hair",
@@ -64,8 +69,11 @@ CHARACTER_MAPPING = {
 }
 
 LADY_PROMPT = """Create a highly ultra-realistic portrait, skin has a smooth, sun-kissed glow with a hint of warmth.
-The lighting is soft and natural, highlighting her facial features with delicate shadows, adding depth to the portrait."""
+The lighting is soft and natural, highlighting her facial features with delicate shadows, adding depth to the portrait.
+"""
 
 MAN_PROMPT = """Create a highly realistic portrait, entrepreneur guy, handsome, full-face photo, 
 nikon photo, very attractive, a man who is a narcissist, adding depth to the portrait.
 """
+
+VK_GROUP = -1002237736753

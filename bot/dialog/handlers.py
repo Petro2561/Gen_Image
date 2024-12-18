@@ -18,18 +18,29 @@ from db.uow import UoW
 
 from phrase import generate_image
 import settings
+import logging
 
 
 async def check_subscribe(callback: CallbackQuery, button: Button, dialog_manager: DialogManager) -> None:
-    user: DBUser = dialog_manager.middleware_data["user"]
     bot: Bot = dialog_manager.middleware_data["bot"]
     try:
-        result = await bot.get_chat_member(-1002237736753, 65986858)
+        result = await bot.get_chat_member(chat_id="@vk_dating", user_id=callback.from_user.id)
+        if result.status in ["left", "kicked"]:
+            await callback.answer("Вы не состоите в группе.", show_alert=True)
+        else:
+            await dialog_manager.next()
     except Exception:
-        pass
+        logging.error("Ошибка проверки группы")
+        await dialog_manager.next()
+
 
 async def handle_choose_gender(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
     dialog_manager.dialog_data["gender"] = button.widget_id
+
+
+async def handle_choose_age(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
+    dialog_manager.dialog_data["age"] = button.widget_id
+
 
 
 async def handle_body_type(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):

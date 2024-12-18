@@ -5,6 +5,7 @@ class MainSG(StatesGroup):
     start = State()
     subscribe = State()
     choose_gender = State()
+    choose_age = State()
     shape = State()
     hair_style = State()
     hair_color = State()
