@@ -109,9 +109,9 @@ start_dialog = Dialog(
     Window(
         Const(settings.SPECIAL_FEATURE_TEMPLATE),
         Column(
-            Button(Const("Борода"), id="piercing", on_click=handlers.handle_feature),
-            Button(Const("Усы"), id="freckles", on_click=handlers.handle_feature),
-            Button(Const("Пирсинг"), id="makeup", on_click=handlers.handle_feature),
+            Button(Const("Борода"), id="bearded", on_click=handlers.handle_feature),
+            Button(Const("Усы"), id="mustache", on_click=handlers.handle_feature),
+            Button(Const("Пирсинг"), id="piercing", on_click=handlers.handle_feature),
         ),
         SwitchTo(Const("Назад"), id="back", state=MainSG.character),
         state=MainSG.feature_man

@@ -30,3 +30,41 @@ P.S. 15 февраля мы опубликуем здесь итоги розы�
 
 INVITE_TEMPLATE = """Узнай, как выглядит пара твоей мечты с помощью искусственного интеллекта от VK Знакомств в боте Мэтч GPT: ссылка."""
 
+CHARACTER_MAPPING = {
+    "man": "man",
+    "lady": "lady",
+    "slim": "thin and neat",
+    "plump": "plump and fat",
+    "sporty": "sporty and muscled, bonny",
+    "short_hair": "short hair",
+    "long_hair": "long hair",
+    "curly_hair": "curly hair",
+    "bald": "bald",
+    "blonde": "blonde",
+    "dark": "black",
+    "red": "red",
+    "bright": "rainbow colored",
+    "elegant": "elegant dinner gala dress",
+    "cute": "cute nice pretty resembles alexandra daddario",
+    "strict": "strict in suit wearing",
+    "romantic": "romantic in dress with roses",
+    "official": "official in suit wearing",
+    "brutal": "brutal, bossy, stoic and very serious",
+    "romantic_man": "romantic man and cute musician poetry",
+    "relaxed": "relaxed, easygoing, polite, soft",
+    "kind": "kind, friendly",
+    "funny": "funny and cheerful with big smile",
+    "shy": "shy and coward",
+    "melancholic": "melancholic and passive and lazy and boring",
+    "piercing": "piercing",
+    "freckles": "with freckles",
+    "makeup": "with makeup",
+    "bearded": "bearded",
+    "mustache": "horseshoe mustache"
+}
+
+LADY_PROMPT = """Create a highly ultra-realistic portrait, skin has a smooth, sun-kissed glow with a hint of warmth.
+The lighting is soft and natural, highlighting her facial features with delicate shadows, adding depth to the portrait."""
+
+MAN_PROMPT = """Create a highly realistic portrait, entrepreneur guy, handsome, full-face photo, 
+nikon photo, very attractive, a man who is a narcissist, adding depth to the portrait."""

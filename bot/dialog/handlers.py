@@ -105,8 +105,14 @@ async def back_to_feature(callback: CallbackQuery, button: Button, dialog_manage
 async def handle_final(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
     dialog_manager.dialog_data["final"] = button.widget_id
     await callback.message.edit_text("Генерация займет некоторое время...")
-    prompt = ", ".join(value for key, value in dialog_manager.dialog_data.items())
-    image = await generate_image(prompt=prompt)
+    prompt = ", ".join(settings.CHARACTER_MAPPING.get(value, value) for key, value in dialog_manager.dialog_data.items())
+    prompt = prompt[0].upper() + prompt[1:]
+    if dialog_manager.dialog_data["gender"] == "man":
+        final_prompt = settings.MAN_PROMPT + prompt
+    else:
+        final_prompt = settings.LADY_PROMPT + prompt
+    await callback.message.answer(f"Промпт для нейросети: {final_prompt} (Для тестового режима)")
+    image = await generate_image(prompt=final_prompt)
     image.seek(0)
     final_image = await add_logo_to_image(image)
     image_file = BufferedInputFile(final_image.read(), filename="generated_image.png")
