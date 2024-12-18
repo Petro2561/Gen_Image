@@ -26,7 +26,7 @@ async def check_subscribe(callback: CallbackQuery, button: Button, dialog_manage
     try:
         result = await bot.get_chat_member(chat_id="@vk_dating", user_id=callback.from_user.id)
         if result.status in ["left", "kicked"]:
-            await callback.answer("Вы не состоите в группе.", show_alert=True)
+            await callback.answer("Вы не подписаны на наш канал 😉️️️️️️.", show_alert=True)
         else:
             await dialog_manager.next()
     except Exception:
@@ -49,7 +49,6 @@ async def handle_body_type(callback: CallbackQuery, button: Button, dialog_manag
 
 async def handle_hair_style(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
     dialog_manager.dialog_data["hair_style"] = button.widget_id
-    print(dialog_manager.dialog_data)
     if button.widget_id == "bald":
         dialog_manager.dialog_data["previous_state"] = "bald"
         if dialog_manager.dialog_data["gender"] == "man":
