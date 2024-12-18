@@ -67,4 +67,5 @@ LADY_PROMPT = """Create a highly ultra-realistic portrait, skin has a smooth, su
 The lighting is soft and natural, highlighting her facial features with delicate shadows, adding depth to the portrait."""
 
 MAN_PROMPT = """Create a highly realistic portrait, entrepreneur guy, handsome, full-face photo, 
-nikon photo, very attractive, a man who is a narcissist, adding depth to the portrait."""
+nikon photo, very attractive, a man who is a narcissist, adding depth to the portrait.
+"""

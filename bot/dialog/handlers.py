@@ -59,7 +59,7 @@ async def handle_hair_color(callback: CallbackQuery, button: Button, dialog_mana
 
 
 async def handle_girl_look(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
-    dialog_manager.dialog_data["girl_look"] = button.widget_id
+    dialog_manager.dialog_data["look"] = button.widget_id
     await dialog_manager.switch_to(state=MainSG.character)
 
 
@@ -78,7 +78,7 @@ async def back_to_look(callback: CallbackQuery, button: Button, dialog_manager: 
 
 
 async def handle_man_look(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
-    dialog_manager.dialog_data["man_look"] = button.widget_id
+    dialog_manager.dialog_data["look"] = button.widget_id
 
 
 async def handle_personality(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
@@ -103,15 +103,16 @@ async def back_to_feature(callback: CallbackQuery, button: Button, dialog_manage
 
 
 async def handle_final(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
-    dialog_manager.dialog_data["final"] = button.widget_id
     await callback.message.edit_text("Генерация займет некоторое время...")
-    prompt = ", ".join(settings.CHARACTER_MAPPING.get(value, value) for key, value in dialog_manager.dialog_data.items())
+    prompt = ", ".join(
+        settings.CHARACTER_MAPPING.get(value, value)
+        for key, value in dialog_manager.dialog_data.items() if key != "previous_state")
     prompt = prompt[0].upper() + prompt[1:]
     if dialog_manager.dialog_data["gender"] == "man":
         final_prompt = settings.MAN_PROMPT + prompt
     else:
         final_prompt = settings.LADY_PROMPT + prompt
-    # await callback.message.answer(f"Промпт для нейросети: {final_prompt} (Для тестового режима)")
+    await callback.message.answer(f"Промпт для нейросети: {final_prompt} (Для тестового режима)")
     image = await generate_image(prompt=final_prompt)
     image.seek(0)
     final_image = await add_logo_to_image(image)
